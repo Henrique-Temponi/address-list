@@ -1,6 +1,10 @@
 <?php
+
     session_start();
+
+    include "database.php";
     $error = "";
+    $show_table = true;
 
     // ini_set('display_errors', 1);
 
@@ -31,13 +35,19 @@
 
     $list_address = array();
 
-    $_SESSION['list_address'][] = $person;
+    // $_SESSION['list_address'][] = $person;
 
-    if (isset($_SESSION['list_address'])) {
-        $list_address = $_SESSION['list_address'];
-    }
-    else {
-        $error = "erro";
-    }
+    // if (isset($_SESSION['list_address'])) {
+    //     $list_address = $_SESSION['list_address'];
+    // }
+
+    $list_address = get_tarefas($connect);
+
+    // if (isset($list_database)) {
+    //     $list_address = $list_database;
+    // }
+    // else {
+    //     $error = "erro";
+    // }
 
     include "index.php";
