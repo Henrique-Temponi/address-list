@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <html>
     <head>
         <title>Address List</title>
@@ -15,44 +14,42 @@
                 </label>
                 <br>
                 <label>
-                    Telelphone:
+                    E-mail:
+                    <br>
+                    <input type="text" name="email">
+                </label>
+                <br>
+                <label>
+                    Telephone:
                     <br>
                     <input type="text" name="tele">
                 </label>
+                <br>
+                <label>
+                    Bookmarked:
+                    <br>
+                    <input type="checkbox" name="bookmarked" value="1">
+                </label>
+                <br>
                 <input type="submit" value="Send">
             </fieldset>
         </form>
 
-        <?php
-
-            $person = array();
-
-            if (isset($_GET['name'])) {
-                $person['name'] = $_GET['name'];
-            }
-
-            if (isset($_GET['tele'])) {
-                $person['tele'] = $_GET['tele'];
-            }
-
-            $list_address = array();
-            
-            $_SESSION['list_address'][] = $person;
-
-            $list_address = $_SESSION['list_address'];
-
-        ?>
         <h2>List of address</h2>
         <hr>
         <table>
             <thead>
                 <th>Name</th>
-                <th>Telelphone</th>
+                <th>E-mail</th>
+                <th>Tele</th>
+                <th>Bookmarked</th>
             </thead>
             <?php foreach ($list_address as $address) : ?>
                 <tr>
                     <td> <?php echo $address['name']; ?></td>
-                    <td> <?php echo $address['tele']; ?></td>
+                    <td> <?php echo $address['email']; ?>
+                    <td> <?php echo $address['tele']; ?>
+                    <td> <?php echo $address['bookmarked']; ?>
                 </tr>
             <?php endforeach; ?>
         </table>
